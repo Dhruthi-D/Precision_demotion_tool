@@ -1,0 +1,24 @@
+{
+  "inputFile": "../test/kernel1.cpp",
+  "tolerance": 0.01,
+  "originalOutput": 7.0767499999999997,
+  "demotedOutput": 7.0781200000000002,
+  "accuracyLoss": 0.0013700000000005375,
+  "verification": "PASS",
+  "passed": true,
+  "originalRuntimeMs": 3.2212230000000002,
+  "demotedRuntimeMs": 2.5127609999999998,
+  "performanceGainPercent": 21.993572006657107,
+  "speedup": 1.2819456366920692,
+  "originalCompileTimeMs": 260.75385799999998,
+  "demotedCompileTimeMs": 262.74262900000002,
+  "paths": {
+    "tempDir": "../temp/verify____test_kernel1_cpp_33716",
+    "originalSource": "../temp/verify____test_kernel1_cpp_33716/original.cpp",
+    "demotedSource": "../temp/verify____test_kernel1_cpp_33716/demoted.cpp",
+    "originalResult": "../temp/verify____test_kernel1_cpp_33716/original_result.txt",
+    "demotedResult": "../temp/verify____test_kernel1_cpp_33716/demoted_result.txt",
+    "csv": "../results/evaluation.csv",
+    "astDot": "../temp/web_test_ast.dot"
+  }
+}

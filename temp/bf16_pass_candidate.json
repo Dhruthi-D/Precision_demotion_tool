@@ -1,0 +1,24 @@
+{
+  "inputFile": "../temp/bf16_pass_candidate.cpp",
+  "tolerance": 0.00050000000000000001,
+  "originalOutput": 0.0051000000000000004,
+  "demotedOutput": 0.0050964399999999998,
+  "accuracyLoss": 3.5600000000005419e-06,
+  "verification": "PASS",
+  "passed": true,
+  "originalRuntimeMs": 6.2115010000000002,
+  "demotedRuntimeMs": 6.2932980000000001,
+  "performanceGainPercent": -1.3168636695059679,
+  "speedup": 0.98700252236585651,
+  "originalCompileTimeMs": 479.746308,
+  "demotedCompileTimeMs": 542.83256600000004,
+  "paths": {
+    "tempDir": "../temp/verify____temp_bf16_pass_candidate_cpp_2",
+    "originalSource": "../temp/verify____temp_bf16_pass_candidate_cpp_2/original.cpp",
+    "demotedSource": "../temp/verify____temp_bf16_pass_candidate_cpp_2/demoted.cpp",
+    "originalResult": "../temp/verify____temp_bf16_pass_candidate_cpp_2/original_result.txt",
+    "demotedResult": "../temp/verify____temp_bf16_pass_candidate_cpp_2/demoted_result.txt",
+    "csv": "../results/evaluation.csv",
+    "astDot": "../temp/bf16_pass_candidate.dot"
+  }
+}

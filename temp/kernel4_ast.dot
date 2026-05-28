@@ -1,0 +1,36 @@
+digraph ExpressionAST {
+    graph [rankdir=TB, splines=line, nodesep=0.45, ranksep=0.55];
+    node [shape=box, style=filled, fillcolor=white, color="#555555", fontname="Helvetica", fontcolor="blue"];
+    edge [color="black", arrowsize=0.6];
+    subgraph cluster_0 {
+        label="return y";
+    n1 [label="y"];
+        n1 [style="bold,filled", fillcolor="white"];
+    }
+    subgraph cluster_2 {
+        label="y = x * 0.5F + x * x * 0.25F";
+    n3 [label="+"];
+    n4 [label="*"];
+    n5 [label="x"];
+    n4 -> n5;
+    n6 [label="0.5F"];
+    n4 -> n6;
+    n3 -> n4;
+    n7 [label="*"];
+    n8 [label="*"];
+    n9 [label="x"];
+    n8 -> n9;
+    n10 [label="x"];
+    n8 -> n10;
+    n7 -> n8;
+    n11 [label="0.25F"];
+    n7 -> n11;
+    n3 -> n7;
+        n3 [style="bold,filled", fillcolor="white"];
+    }
+    subgraph cluster_12 {
+        label="return 0";
+    n13 [label="0"];
+        n13 [style="bold,filled", fillcolor="white"];
+    }
+}

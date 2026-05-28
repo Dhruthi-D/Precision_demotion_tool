@@ -1,0 +1,10 @@
+/media/dhruthi/CommonData/Win/Dhruthi/precision-demotion-tool-web/build/CMakeFiles/intrinsics_gen.dir
+/media/dhruthi/CommonData/Win/Dhruthi/precision-demotion-tool-web/build/CMakeFiles/vt_gen.dir
+/media/dhruthi/CommonData/Win/Dhruthi/precision-demotion-tool-web/build/CMakeFiles/omp_gen.dir
+/media/dhruthi/CommonData/Win/Dhruthi/precision-demotion-tool-web/build/CMakeFiles/acc_gen.dir
+/media/dhruthi/CommonData/Win/Dhruthi/precision-demotion-tool-web/build/CMakeFiles/target_parser_gen.dir
+/media/dhruthi/CommonData/Win/Dhruthi/precision-demotion-tool-web/build/CMakeFiles/clang-tablegen-targets.dir
+/media/dhruthi/CommonData/Win/Dhruthi/precision-demotion-tool-web/build/CMakeFiles/tool.dir
+/media/dhruthi/CommonData/Win/Dhruthi/precision-demotion-tool-web/build/CMakeFiles/verify.dir
+/media/dhruthi/CommonData/Win/Dhruthi/precision-demotion-tool-web/build/CMakeFiles/edit_cache.dir
+/media/dhruthi/CommonData/Win/Dhruthi/precision-demotion-tool-web/build/CMakeFiles/rebuild_cache.dir

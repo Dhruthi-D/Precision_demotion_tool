@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/verify.dir/link.d CMakeFiles/verify.dir/src/Verifier.cpp.o CMakeFiles/verify.dir/src/Benchmark.cpp.o -o verify

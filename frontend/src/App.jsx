@@ -136,6 +136,29 @@ function parseSectionRows(body) {
     .map((match) => [match[1].trim(), match[2].trim()]);
 }
 
+function getAstDataFlowRows(block) {
+  const rows = parseSectionRows(block);
+  const values = new Map(rows.map(([label, value]) => [label.toLowerCase(), value]));
+  const unmatchedLines = block
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .filter((line) => !/^\s*[^:]{2,}?\s*:\s*.*$/.test(line));
+
+  const orderedRows = [
+    ["Variable", values.get("variable") || "-"],
+    ["Flow", values.get("flow") || "-"],
+    ["Depends", values.get("depends") || "-"],
+    ["Local Error Estimate", values.get("local error estimate") || "-"],
+  ];
+
+  if (unmatchedLines.length > 0) {
+    orderedRows.push(["Details", unmatchedLines.join(" ")]);
+  }
+
+  return orderedRows;
+}
+
 function AnalysisCards({ text }) {
   const sections = useMemo(() => parseAnalysisLog(text), [text]);
 
@@ -146,15 +169,20 @@ function AnalysisCards({ text }) {
   return (
     <div className="analysis-cards">
       {sections.map((section, index) => {
+        const sectionClass = section.title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+
         return (
-          <article className="analysis-card" key={`${section.title}-${index}`}>
+          <article className={`analysis-card analysis-card-${sectionClass}`} key={`${section.title}-${index}`}>
             <header>
               <h2>{section.title}</h2>
             </header>
             <div className="analysis-blocks">
               {section.blocks.map((block, blockIndex) => {
-                const rows = parseSectionRows(block);
-                const hasOnlyRows = rows.length > 0 && rows.length === block.split(/\r?\n/).filter(Boolean).length;
+                const isAstDataFlow = section.title === "AST Data Flow Analysis";
+                const rows = isAstDataFlow ? getAstDataFlowRows(block) : parseSectionRows(block);
+                const hasOnlyRows = rows.length > 0 && (
+                  isAstDataFlow || rows.length === block.split(/\r?\n/).filter(Boolean).length
+                );
 
                 return (
                   <div className="analysis-block" key={`${section.title}-${blockIndex}`}>
@@ -196,6 +224,7 @@ function App() {
   const [activeFile, setActiveFile] = useState("demoted");
   const [fileContent, setFileContent] = useState("");
   const [fileError, setFileError] = useState("");
+  const [astZoom, setAstZoom] = useState(1);
   const logRef = useRef(null);
 
   const result = job?.result;
@@ -392,8 +421,26 @@ function App() {
         </div>
 
         {activeFile === "ast" && jobId ? (
-          <div className="ast-frame">
-            <img src={`${apiBase}/api/jobs/${jobId}/files/ast-svg?${job?.status || ""}`} alt="Expression AST" />
+          <div className="ast-viewer">
+            <div className="ast-toolbar">
+              <button type="button" onClick={() => setAstZoom((zoom) => Math.max(0.25, zoom - 0.25))}>
+                Zoom -
+              </button>
+              <span>{Math.round(astZoom * 100)}%</span>
+              <button type="button" onClick={() => setAstZoom((zoom) => Math.min(2.5, zoom + 0.25))}>
+                Zoom +
+              </button>
+              <button type="button" onClick={() => setAstZoom(1)}>
+                Fit
+              </button>
+            </div>
+            <div className="ast-frame">
+              <img
+                src={`${apiBase}/api/jobs/${jobId}/files/ast-svg?${job?.status || ""}`}
+                alt="Expression AST"
+                style={{ height: `${astZoom * 100}%` }}
+              />
+            </div>
           </div>
         ) : activeFile === "analysis" ? (
           <AnalysisCards text={fileError && !analysisText ? fileError : analysisText} />

@@ -231,24 +231,50 @@ textarea {
   font-weight: 800;
 }
 
+.ast-viewer {
+  background: #ffffff;
+}
+
+.ast-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 46px;
+  padding: 0 12px;
+  border-bottom: 1px solid #dbe3e8;
+  background: #f7fafb;
+}
+
+.ast-toolbar button {
+  min-height: 32px;
+}
+
+.ast-toolbar span {
+  min-width: 52px;
+  color: #43505a;
+  font-size: 13px;
+  font-weight: 800;
+  text-align: center;
+}
+
 .ast-frame {
-  min-height: 360px;
+  height: clamp(360px, 58vh, 620px);
   overflow: auto;
   padding: 16px;
   background: #ffffff;
 }
 
 .ast-frame img {
-  max-width: 100%;
-  height: auto;
+  display: block;
+  width: auto;
+  max-width: none;
+  margin: 0 auto;
 }
 
 .analysis-cards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
-  max-height: 520px;
-  overflow: auto;
   padding: 14px;
   background: #f7fafb;
 }
@@ -281,6 +307,11 @@ textarea {
   display: grid;
   gap: 12px;
   padding: 12px;
+}
+
+.analysis-card-ast-data-flow-analysis .analysis-blocks {
+  max-height: 420px;
+  overflow: auto;
 }
 
 .analysis-block {

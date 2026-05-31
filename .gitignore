@@ -1,4 +1,7 @@
 node_modules/
+build/
 frontend/dist/
 backend/jobs/
+temp/
+*.mp4
 npm-debug.log*
